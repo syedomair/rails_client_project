@@ -1,0 +1,8 @@
+development:
+  base_url: http://localhost:3001
+  api_key: secret_key
+
+test:
+  base_url: http://localhost:3001
+  api_key: secret_key
+
