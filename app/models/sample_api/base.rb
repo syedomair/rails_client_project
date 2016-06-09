@@ -4,15 +4,14 @@ module SampleApi
     include HTTParty
 
     #base_uri "http://localhost:3001"
-    def query opts
+    def query opts, param_access_type='', param_user_email='', param_user_password=''
       api_key = SampleApi::Config.api_key
+      method  = opts[:method].to_s.downcase
 
+      param_access_type == '' ? access_type = 'secured' : access_type = param_access_type
+      param_user_email == '' ? user_email =  opts[:params]['user']['email'] : user_email = param_user_email
+      param_user_password == '' ? user_password = opts[:params]['user']['password'] : user_password = param_user_password 
 
-
-      method   = opts[:method].to_s.downcase
-      access_type = 'secured'
-      user_email = opts[:params]['user']['email']
-      user_password = opts[:params]['user']['password']
       token = "custom_auth api_key=\"#{api_key}\", access_type=\"#{access_type}\", user_email=\"#{user_email}\", password=\"#{user_password}\""
 
       response = self.class.send(method, opts[:endpoint], query: opts[:params], headers: { 'Content-Type' => 'application/json', 'Accept' => 'application/json', 'so_auth'=>token })
@@ -31,6 +30,9 @@ module SampleApi
       end
     end
 
+    def public_query opts
+      query opts, 'public', 'public_user', 'public_user'
+    end
 
     private
 

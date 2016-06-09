@@ -8,7 +8,7 @@ module SessionsHelper
   def current_user
     if @current_user.nil?
       rtnResponse = SampleApi::Session.new.signin(session[:user_email], session[:user_password])
-      if rtnResponse[:status] == 'success'
+      if rtnResponse && rtnResponse[:status] == 'success'
         @current_user = rtnResponse[:data]
       else
         return nil

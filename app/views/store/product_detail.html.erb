@@ -1,0 +1,15 @@
+<%= render "subheader_category" %>
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to image_tag("catalog_images/"+@product['image'] ), {action: 'product_detail', controller: 'store', id:@product['id']}, class: 'img-responsive' %>
+  </div>
+  <div class="col-md-8">
+    <h4><%=@product['name']%></h4>
+    <p><%=@product['short_description']%></p>
+    <ul>
+      <li>SKU:<%=@product['sku']%></li>
+      <li>Price:<%=@product['price']%></li>
+    </ul>
+  </div>
+</div>
+

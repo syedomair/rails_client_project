@@ -1,0 +1,16 @@
+<div class="container-fluid content-breather-small" id="sub-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4></h4>
+      </div><!-- End of column one -->
+      <div class="col-md-6 text-right">
+        <ul class="breadcrumb">
+          <% @categories['list'].each do |category| %>
+            <li><%= link_to category['name'], :controller=>"store", :action=> "products_category", :id=>category['id']  %></li>
+          <% end %>
+        </ul>
+      </div><!-- End of column two -->
+    </div><!-- End of row -->	
+  </div><!-- End of container -->
+</div><!-- End of fluid container -->

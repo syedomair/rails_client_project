@@ -1,0 +1,12 @@
+<% @products['list'].each do |product| %>
+  <div class="item web col-sm-3">
+    <div class="product">
+      <%= link_to image_tag("catalog_images/"+product['image'] ), {action: 'product_detail', controller: 'store', id:product['id']}, class: 'img-responsive' %>
+      <%= link_to action: 'product_detail', controller: 'store', id:product['id'] do %>
+          <p><b><%=product['name']%></b></p>
+          <p>Price:<%= product['price']%></p>
+          SKU: <%=product['sku']%>
+      <% end %> 
+    </div>
+  </div>
+<% end %>

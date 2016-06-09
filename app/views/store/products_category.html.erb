@@ -1,0 +1,10 @@
+<%= render "subheader_category" %>
+<h2>Products for <%= @products['list'][0]['category_name']%> </h2> 
+
+<div class="container-fluid no-gutter">
+  <div id="page_body">
+    <div id="posts" class="row">
+      <%= render "product" %>
+    </div>
+  </div>
+</div>

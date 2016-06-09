@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def signin
     rtnResponse = SampleApi::Session.new.signin(params[:email], params[:password])
 
-    if rtnResponse[:status] == 'success'
+    if rtnResponse && rtnResponse[:status] == 'success'
       log_in(params[:email], params[:password])
     else
       flash[:signin_error] = 'Invalid email/password'
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   def signup
     rtnResponse = SampleApi::Session.new.signup(params[:email], params[:password], params[:password_confirmation])
 
-    if rtnResponse[:status] == 'success'
+    if rtnResponse && rtnResponse[:status] == 'success'
       log_in(params[:email], params[:password])
     else
       flash[:signup_error] = 'Invalid data'
