@@ -1,5 +1,8 @@
-<%# if flash[:signin_error] %>
-  //$('#err_sign_in').text('<%#= flash[:signin_error] %>');  
-<%# else %>
+<% if flash[:signup_error] %>
+  $('#err_sign_up').text('<%= flash[:signin_error] %>');  
+<% else %>
   $('#modal-sign-up').modal('hide');
-<%# end %>
+  $('#list_sign_out').show();
+  $('#list_sign_in').hide();
+  $('#list_sign_up').hide();
+<% end %>

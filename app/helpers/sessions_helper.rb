@@ -1,8 +1,9 @@
 module SessionsHelper
 
-  def log_in(user_email, user_password)
+  def log_in(user_email, user_password, user_id)
     session[:user_email] = user_email
     session[:user_password] = user_password
+    session[:user_id] = user_id
   end
 
   def current_user
@@ -23,6 +24,7 @@ module SessionsHelper
   end
 
   def log_out
+    session.delete(:user_id)
     session.delete(:user_email)
     session.delete(:user_password)
     @current_user = nil
